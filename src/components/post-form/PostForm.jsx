@@ -4,6 +4,7 @@ import { Button, Input, RTE, Select } from "../index.js";
 import appwriteService from "../../appwrite/appwrite.config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -27,7 +28,8 @@ function PostForm({ post }) {
                 const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
 
                 if (file) {
-                    appwriteService.deleteFile(post.featuredImage)
+                    appwriteService.deleteFile(post.featuredImage);
+                 
                 }
 
                 const dbPost = await appwriteService.updatePost(post.$id, {
@@ -38,7 +40,17 @@ function PostForm({ post }) {
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
+                toast.success("Successfully Post Updated", {
+                    style: {
+                      borderRadius: "30px",
+                    },
+                  });
             } catch (error) {
+                toast.error(error.message, {
+                    style: {
+                      borderRadius: "10px",
+                    },
+                  });
                 console.log(error)
             }
         } else {
@@ -58,8 +70,18 @@ function PostForm({ post }) {
                         navigate(`/post/${dbPost.$id}`);
                     }
                 }
+                toast.success("Successfully Post Added", {
+                    style: {
+                      borderRadius: "30px",
+                    },
+                  });
             } catch (error) {
                 console.log(error)
+                toast.error(error.message, {
+                    style: {
+                      borderRadius: "10px",
+                    },
+                  });
                 await appwriteService.deleteFile(file.$id)
                 // throw error
             }

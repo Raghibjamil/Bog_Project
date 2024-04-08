@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
-import './App.css'
+
 import authService from './appwrite/auth'
 import { login, logout } from './store/authSlice'
 import { Footer, Header } from './components'
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -39,20 +40,29 @@ function App() {
     //   if(userAuth.status === false) setUserName('')
     //   // setUserName('')
     // }
+    
   }, [])
 
   console.log('username: ', userName)
 
-  return !loading ? (<div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-    <div className='w-full block'>
+  return !loading ? (
+    <>
+    <div>
+    <Toaster position="top-center"/>
+  </div>
+  <div className='min-h-screen flex flex-wrap content-between'>
+    <div className='w-full block border-2'>
       <Header />
-      <main>
-      <h2 className='text-2xl font-bold text-center'>{userAuth.status === true ? ('Welcome, '+ userAuth.userData.name) : ''}</h2>
+      <main className="min-h-[350px]  ">
+      <h2 className='text-2xl pt-4 font-bold text-center'>{userAuth.status === true ? ('Welcome, '+ userAuth.userData.name) : ''}</h2>
         <Outlet />
       </main>
       <Footer />
     </div>
-  </div>) : null
+  
+  </div>
+  </>
+  ) : null
 }
 
 export default App

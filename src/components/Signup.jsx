@@ -5,6 +5,7 @@ import { login } from '../store/authSlice'
 import { Button, Input, Logo } from './index.js'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import toast from "react-hot-toast";
 
 function Signup() {
   const navigate = useNavigate()
@@ -24,8 +25,18 @@ function Signup() {
           navigate("/")
         }
       }
+      toast.success("Successfully SignUp in", {
+        style: {
+          borderRadius: "30px",
+        },
+      });
     } catch (error) {
       setError(error.message)
+      toast.error(error.message, {
+        style: {
+          borderRadius: "10px",
+        },
+      });
       console.log('Signup error: ', error)
     }
   }

@@ -5,6 +5,7 @@ import { Button, Input, Logo } from './index'
 import { useDispatch, useSelector } from 'react-redux'
 import authService from '../appwrite/auth'
 import { useForm } from "react-hook-form"
+import toast from "react-hot-toast";
 
 function Login() {
     const navigate = useNavigate()
@@ -28,8 +29,18 @@ function Login() {
                     navigate("/")
                 }
             }
+            toast.success("Successfully logged in", {
+                style: {
+                  borderRadius: "30px",
+                },
+              });
         } catch (error) {
             setError(error.message)
+            toast.error(error.message, {
+                style: {
+                  borderRadius: "10px",
+                },
+              });
             console.log('Login error: ', error)
         }
     }
