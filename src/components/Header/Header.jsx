@@ -144,7 +144,7 @@ function Header() {
   };
 
   return (
-    <header className='py-4 shadow bg-gray-500'>
+    <header className='py-4 shadow bg-gray-900 text-white'>
       <Container >
         <div className='md:flex'>
         <nav className='flex items-center justify-between '>
@@ -169,7 +169,7 @@ function Header() {
           </button>
           </nav>
           {/* Responsive Nav */}
-          <ul className={`md:flex md:ml-auto md:space-x-4 md:border-none md:shadow-none    ${isMenuOpen? 'flex flex-col md:flex-row md:border-b md:shadow-lg md:absolute md:top-full md:left-0 md:mt-2 md:bg-gray-500 md:w-full md:z-10 mt-2 ' : 'hidden'}`}>
+          <ul className={`md:flex md:ml-auto md:space-x-4 md:border-none md:shadow-none    ${isMenuOpen? 'flex flex-col md:flex-row md:border-b md:shadow-lg md:absolute md:top-full md:left-0 md:mt-2 md:bg-gray-900 md:w-full md:z-10 mt-2 ' : 'hidden'}`}>
             {navitems.map((item) =>
               item.active? (
                 <li key={item.name} className="md:ml-4 mb-2 md:mb-0"   >

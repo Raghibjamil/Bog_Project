@@ -24,6 +24,7 @@ function App() {
             dispatch(login({ userData }))
             setUserName(userAuth.userData)
           } else {
+              // If no user data, logout
             dispatch(logout())
           }
         })
@@ -41,7 +42,8 @@ function App() {
     //   // setUserName('')
     // }
     
-  }, [])
+  },  [])
+
 
   console.log('username: ', userName)
 
@@ -53,7 +55,7 @@ function App() {
   <div className='min-h-screen flex flex-wrap content-between'>
     <div className='w-full block border-2'>
       <Header />
-      <main className="min-h-[350px]  ">
+      <main className="min-h-[400px] ">
       <h2 className='text-2xl pt-4 font-bold text-center'>{userAuth.status === true ? ('Welcome, '+ userAuth.userData.name) : ''}</h2>
         <Outlet />
       </main>
