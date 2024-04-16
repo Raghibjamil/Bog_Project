@@ -144,7 +144,7 @@ function Header() {
   };
 
   return (
-    <header className='py-4 shadow bg-gray-900 text-white'>
+    <header className='py-4 shadow bg-gray-900 text-white '>
       <Container >
         <div className='md:flex'>
         <nav className='flex items-center justify-between '>
