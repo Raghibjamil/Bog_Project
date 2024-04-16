@@ -1,9 +1,0 @@
-{
-    "//": "This is a comment-like property",
-    "rewrites": [
-        {
-            "source" : "/(.*)",
-            "destination" : "/"
-        }
-    ]
-}
