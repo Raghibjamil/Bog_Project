@@ -15,37 +15,52 @@ function App() {
   const userAuth = useSelector((state) => state.auth)
   // console.log('userAuth: ', userAuth)
 
-  useEffect(() => {
-    setLoading(true)
-    if (userAuth.status === true) {
-      authService.getCurrentUser()
-        .then((userData) => {
-          if (userData) {
-            dispatch(login({ userData }))
-            setUserName(userAuth.userData)
-          } else {
-              // If no user data, logout
-            dispatch(logout())
-          }
-        })
-        .finally(() => setLoading(false))
-    } else {
-      dispatch(logout())
-      setLoading(false)
-      setUserName('')
-    }
+  // useEffect(() => {
+  //   setLoading(true)
+  //   if (userAuth.status === true) {
+  //     authService.getCurrentUser()
+  //       .then((userData) => {
+  //         if (userData) {
+  //           dispatch(login({ userData }))
+  //           setUserName(userAuth.userData)
+  //         } else {
+  //             // If no user data, logout
+  //           dispatch(logout())
+  //         }
+  //       })
+  //       .finally(() => setLoading(false))
+      
+  //   } else {
+  //     // console.log("logout when we refresh");
+  //     dispatch(logout())
+  //     setLoading(false)
+  //     setUserName('')
+  //   }
 
-    // return () => {
-    //   // setLoading(false)
-    //   // dispatch(logout())
-    //   if(userAuth.status === false) setUserName('')
-    //   // setUserName('')
-    // }
+  //   // return () => {
+  //   //   // setLoading(false)
+  //   //   // dispatch(logout())
+  //   //   if(userAuth.status === false) setUserName('')
+  //   //   // setUserName('')
+  //   // }
     
-  },  [])
+  // }, [])
+  
+  useEffect(() => {
+    authService
+      ?.getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }));
+        } else {
+          dispatch(logout());
+        }
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
 
-  console.log('username: ', userName)
+  // console.log('username: ', userName)
 
   return !loading ? (
     <>

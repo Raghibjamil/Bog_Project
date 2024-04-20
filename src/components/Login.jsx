@@ -20,6 +20,7 @@ function Login() {
         setError("")
         try {
             const session = await authService.login(data)
+          
             if (session) {
                 console.log('Login Successfull !')
                 const userData = await authService.getCurrentUser()
