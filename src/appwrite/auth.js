@@ -23,10 +23,10 @@ export class AuthService {
       );
       if (userAccount) {
         // call another method
-        console.log("Account created Successfully");
+      //  console.log("Account created Successfully");
         return this.login({ email, password });
       } else {
-        console.log("Account creation failed!");
+     //   console.log("Account creation failed!");
         return userAccount;
       }
     } catch (error) {
@@ -65,7 +65,7 @@ export class AuthService {
   async logout() {
     try {
       await this.account.deleteSessions();
-      console.log("Logout Successfully");
+     // console.log("Logout Successfully");
     } catch (error) {
       console.log("Appwrite service :: logout :: error: ", error);
       throw error;

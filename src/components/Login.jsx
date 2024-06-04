@@ -14,7 +14,7 @@ function Login() {
     const [error, setError] = useState("")
 
     const authSlice = useSelector((state) => state.auth)
-    console.log('authSlice: (in Login component(in components/Login.jsx)) ', authSlice)
+   // console.log('authSlice: (in Login component(in components/Login.jsx)) ', authSlice)
 
     const login = async (data) => {
         setError("")
@@ -22,10 +22,10 @@ function Login() {
             const session = await authService.login(data)
           
             if (session) {
-                console.log('Login Successfull !')
+              //  console.log('Login Successfull !')
                 const userData = await authService.getCurrentUser()
                 if (userData) {
-                    console.log('userData: (in Login component(in components/Login.jsx)) ', userData)
+                   // console.log('userData: (in Login component(in components/Login.jsx)) ', userData)
                     dispatch(authLogin({userData}))
                     navigate("/")
                 }

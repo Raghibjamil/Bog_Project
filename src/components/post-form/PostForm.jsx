@@ -18,12 +18,12 @@ function PostForm({ post }) {
 
     const navigate = useNavigate();
     const userData = useSelector(state => state.auth.userData);
-    console.log('userData: (in PostForm component) ', userData)
+ //   console.log('userData: (in PostForm component) ', userData)
 
     const submit = async (data) => {
         if (post) {
             // console.log('Data: (in PostForm component) ', data)
-            console.log('Post: (in PostForm component) ', post)
+        //    console.log('Post: (in PostForm component) ', post)
             try {
                 const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
 
@@ -61,7 +61,7 @@ function PostForm({ post }) {
                 if (file) {
                     const fileId = file.$id
                     data.featuredImage = fileId
-                    console.log('User data ID: ', userData.$id)
+                  //  console.log('User data ID: ', userData.$id)
                     const dbPost = await appwriteService.createPost({
                         ...data,
                         userId: userData.$id

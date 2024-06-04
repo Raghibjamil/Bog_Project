@@ -7,7 +7,7 @@ function ProfileBtn() {
 
   useEffect(() => {
 
-    console.log('Loaded Profile.jsx')
+   // console.log('Loaded Profile.jsx')
 
     return () => {
       // console.clear();

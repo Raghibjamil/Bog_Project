@@ -21,7 +21,7 @@ export class Service {
 
     async createPost({title, slug, content, featuredImage, status, userId}) {
         try {
-            console.log('userId: ', userId);
+            //console.log('userId: ', userId);
             const createdPost = await this.databases.createDocument(
                 urlConfig.appwriteDatabaseId,
                 urlConfig.appwriteCollectionId,
@@ -34,10 +34,10 @@ export class Service {
                     userId
                 }
             )
-            console.log('Post created ! ✅');
+           // console.log('Post created ! ✅');
             return createdPost;
         } catch (error) {
-            console.log('Appwrite service :: createPost :: error: ', error);
+           console.log('Appwrite service :: createPost :: error: ', error);
             throw error;
         }
     }
@@ -55,7 +55,7 @@ export class Service {
                     status
                 }
             )
-            console.log('Post updated: (in appwrite.config.js)');
+         //   console.log('Post updated: (in appwrite.config.js)');
             return updatedPost;
         } catch (error) {
             console.log('Appwrite service :: updatePost :: error: ', error);
@@ -69,7 +69,7 @@ export class Service {
                 urlConfig.appwriteCollectionId,
                 slug
             )
-            console.log('Post deleted: ', slug);
+         //   console.log('Post deleted: ', slug);
             return true;
         } catch (error) {
             console.log('Appwrite service :: deletePost :: error: ', error);
@@ -120,7 +120,7 @@ export class Service {
                 ID.unique(),
                 file
             )
-            console.log('File uploaded: ', fileUploadResponse);
+          //  console.log('File uploaded: ', fileUploadResponse);
             return fileUploadResponse;
         } catch (error) {
             console.log('Appwrite service :: uploadFile :: error: ', error);
@@ -134,7 +134,7 @@ export class Service {
                 urlConfig.appwriteBucketId,
                 fileId
             );
-            console.log('File deleted: ', fileId);
+           // console.log('File deleted: ', fileId);
             return true;
         } catch (error) {
             console.log('Appwrite service :: deleteFile :: error: ', error);
